@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Statistik ASN Kabupaten Sambas</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    canvas {
+      margin-bottom: 50px;
+      max-width: 800px;
+    }
+    h2 {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Statistik ASN Kabupaten Sambas (Dummy)</h1>
+
+  <h2>Jumlah ASN Berdasarkan Jenis ASN</h2>
+  <canvas id="chartJenis"></canvas>
+
+  <h2>Jumlah ASN Berdasarkan Golongan</h2>
+  <canvas id="chartGolongan"></canvas>
+
+  <h2>Jumlah ASN Berdasarkan Jenis Kelamin</h2>
+  <canvas id="chartGender"></canvas>
+
+  <script>
+    // Grafik Jenis ASN
+    new Chart(document.getElementById('chartJenis'), {
+      type: 'bar',
+      data: {
+        labels: ['PNS', 'PPPK'],
+        datasets: [{
+          label: 'Jumlah ASN',
+          data: [4762, 1004],
+          backgroundColor: ['#3498db', '#f1c40f']
+        }]
+      }
+    });
+
+    // Grafik Golongan ASN
+    new Chart(document.getElementById('chartGolongan'), {
+      type: 'bar',
+      data: {
+        labels: ['Golongan I', 'Golongan II', 'Golongan III', 'Golongan IV'],
+        datasets: [{
+          label: 'Jumlah ASN',
+          data: [50, 800, 3000, 912],
+          backgroundColor: '#2ecc71'
+        }]
+      }
+    });
+
+    // Grafik Jenis Kelamin
+    new Chart(document.getElementById('chartGender'), {
+      type: 'pie',
+      data: {
+        labels: ['Laki-laki', 'Perempuan'],
+        datasets: [{
+          label: 'Jumlah ASN',
+          data: [2500, 3266],
+          backgroundColor: ['#2980b9', '#e74c3c']
+        }]
+      }
+    });
+  </script>
+</body>
+</html>
