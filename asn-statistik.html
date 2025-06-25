@@ -10,12 +10,16 @@
       padding: 20px;
       margin: 0;
     }
-    canvas {
-      margin-bottom: 50px;
-      max-width: 100%;
-    }
+
     h1, h2 {
       text-align: center;
+    }
+
+    canvas {
+      display: block;
+      margin: 40px auto;
+      max-width: 100%;
+      height: auto; /* ✅ agar tidak terpotong saat diresize */
     }
   </style>
 </head>
@@ -102,11 +106,13 @@
 
     // Script untuk mengirim tinggi konten ke parent (iframe WordPress)
     function resizeIframe() {
-      const height = document.body.scrollHeight;
-      const id = new URLSearchParams(window.location.search).get('id') || '';
-      window.parent.postMessage({ type: 'resize', height: height, id: id }, '*');
+      setTimeout(() => {
+        const height = document.body.scrollHeight;
+        const id = new URLSearchParams(window.location.search).get('id') || '';
+        window.parent.postMessage({ type: 'resize', height: height, id: id }, '*');
+      }, 500); // beri jeda 500ms agar semua chart selesai dirender
     }
-
+  
     window.addEventListener('load', resizeIframe);
     window.addEventListener('resize', resizeIframe);
   </script>
