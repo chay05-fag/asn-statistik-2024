@@ -8,13 +8,14 @@
     body {
       font-family: sans-serif;
       padding: 20px;
+      margin: 0;
     }
     canvas {
       margin-bottom: 50px;
-      max-width: 800px;
+      max-width: 100%;
     }
-    h2 {
-      margin-top: 50px;
+    h1, h2 {
+      text-align: center;
     }
   </style>
 </head>
@@ -41,6 +42,16 @@
           data: [4762, 1004],
           backgroundColor: ['#3498db', '#f1c40f']
         }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Distribusi Jenis ASN'
+          }
+        }
       }
     });
 
@@ -54,6 +65,16 @@
           data: [50, 800, 3000, 912],
           backgroundColor: '#2ecc71'
         }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Distribusi Golongan ASN'
+          }
+        }
       }
     });
 
@@ -67,18 +88,27 @@
           data: [2500, 3266],
           backgroundColor: ['#2980b9', '#e74c3c']
         }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Distribusi ASN Berdasarkan Jenis Kelamin'
+          }
+        }
       }
     });
 
+    // Script untuk mengirim tinggi konten ke parent (iframe WordPress)
     function resizeIframe() {
-    const height = document.body.scrollHeight;
-    const id = new URLSearchParams(window.location.search).get('id') || '';
-    window.parent.postMessage({ type: 'resize', height: height, id: id }, '*');
-  }
+      const height = document.body.scrollHeight;
+      const id = new URLSearchParams(window.location.search).get('id') || '';
+      window.parent.postMessage({ type: 'resize', height: height, id: id }, '*');
+    }
 
-  window.addEventListener('load', resizeIframe);
-  window.addEventListener('resize', resizeIframe);
-
+    window.addEventListener('load', resizeIframe);
+    window.addEventListener('resize', resizeIframe);
   </script>
 </body>
 </html>
